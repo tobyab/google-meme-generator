@@ -86,11 +86,11 @@
   document.getElementById('download-btn').addEventListener('click', function(e) {
     e.preventDefault();
 
-    domtoimage.toJpeg(document.getElementById('image-container'), { quality: 0.95 })
+    domtoimage.toPng(document.getElementById('image-container'))
         .then(function (dataUrl) {
           let link = document.createElement('a');
           link.download = 'image.jpeg';
-          link.href = dataUrl;
+          link.src = dataUrl;
           link.click();
         })
         .catch(function (error) {
