@@ -96,7 +96,7 @@
         .then(function (dataUrl) {
           let link = document.createElement('a');
           link.download = 'image.png';
-          link.src = dataUrl;
+          link.href = dataUrl;
           link.click();
         })
         .catch(function (error) {
