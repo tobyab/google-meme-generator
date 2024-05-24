@@ -89,10 +89,8 @@
     domtoimage.toPng(document.getElementById('image-container'), {
       quality: 1,
       height: 810,
-      width: 1100,
-      style: {
-        'transform': 'scale(2)',
-      } })
+      width: 1100
+    }
         .then(function (dataUrl) {
           let link = document.createElement('a');
           link.download = 'image.png';
