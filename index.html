@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="./font" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Proxima Nova', sans-serif;
+            display: grid;
+            justify-content: center;
+            place-items: center;
+            height: 100vh;
+        }
+        #image-container {
+            position: relative;
+            width: 700px;
+            height: 520px;
+            word-break: break-word;
+        }
+        #image-container img {
+            width: 100%;
+            height: 100%;
+            border: #f5f5f5 solid 3px;
+            border-radius: 12px;
+        }
+        #image-container .query {
+            position: absolute;
+            top: 7%;
+            left: 25%;
+            color: black;
+            font-size: 16px;
+        }
+        #image-container .text {
+            position: absolute;
+            top: 40%;
+            left: 4%;
+            color: #30323b;
+            font-size: 24px;
+            word-break: break-word;
+            padding-right: 550px;
+            width: 650px
+        }
+        #container {
+            display: grid;
+            justify-content: center;
+            place-items: center;
+            gap: 20px;
+        }
+        input {
+            padding: 8px;
+            border-radius: 12px;
+            background-color: #f5f5f5;
+            border: none;
+        }
+        button {
+            padding: 8px;
+            border-radius: 12px;
+            background-color: #30323b;
+            color: white;
+            border: hidden;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <form id="text-form">
+        <input type="text" id="query" placeholder="Query — what do you want the search query to say?">
+        <input type="text" id="text" placeholder="Response — What do you want the AI's response to be?">
+        <button type="submit">Submit</button>
+    </form>
+    <div id="image-container">
+        <img src="./screenshot.jpeg" alt="Google Search result">
+        <div class="query"></div>
+        <div class="text"></div>
+    </div>
+    <button id="download-btn">Download Image</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<script>
+  document.getElementById('text-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.querySelector('#image-container .text').innerText = document.getElementById('text').value;
+    document.querySelector('#image-container .query').innerText = document.getElementById('query').value;
+  });
+
+  document.getElementById('download-btn').addEventListener('click', function() {
+    html2canvas(document.getElementById('image-container')).then(function(canvas) {
+      let imgData = canvas.toDataURL('image/png');
+      let link = document.createElement('a');
+      link.href = imgData;
+      link.download = 'google-image.png';
+
+      link.click();
+    });
+  });
+</script>
+</body>
+</html>
