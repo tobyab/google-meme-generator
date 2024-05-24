@@ -3,6 +3,38 @@
 <head>
     <link href="./font" rel="stylesheet">
     <style>
+        @media(max-width: 768px) {
+            body {
+                width: 100vw;
+            }
+            input {
+                font-size: 18px;
+            }
+            button {
+                font-size: 18px;
+            }
+            #image-container {
+                width: 100vw !important;
+                height: auto;
+            }
+            #image-container img {
+                height: auto;
+            }
+            #image-container .query {
+                font-size: 12px !important;
+            }
+            #image-container .text {
+                font-size: 16px !important;
+                padding-right: 10vw;
+                width: 90vw !important;
+            }
+            #text-form {
+                width: 100vw !important;
+                gap: 10px;
+                display: grid;
+            }
+        }
+
         body {
             font-family: 'Proxima Nova', sans-serif;
             display: grid;
@@ -12,8 +44,8 @@
         }
         #image-container {
             position: relative;
-            width: 1100px;
-            height: 810px;
+            max-width: 1100px;
+            max-height: 810px;
             word-break: break-word;
         }
         #image-container img {
