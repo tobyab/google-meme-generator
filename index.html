@@ -64,8 +64,8 @@
 <body>
 <div id="container">
     <form id="text-form">
-        <input type="text" id="query" placeholder="Query — what do you want the search query to say?">
-        <input type="text" id="text" placeholder="Response — What do you want the AI's response to be?">
+        <input type="text" id="query" placeholder="Query - what do you want the search query to say?">
+        <input type="text" id="text" placeholder="Response - What do you want the AI's response to be?">
         <button type="submit">Submit</button>
     </form>
     <div id="image-container">
@@ -86,11 +86,11 @@
   document.getElementById('download-btn').addEventListener('click', function(e) {
     e.preventDefault();
 
-    domtoimage.toPng(document.getElementById('image-container'))
+    domtoimage.toJpeg(document.getElementById('image-container'), { quality: 1 })
         .then(function (dataUrl) {
           let link = document.createElement('a');
           link.download = 'image.jpeg';
-          link.src = dataUrl;
+          link.href = dataUrl;
           link.click();
         })
         .catch(function (error) {
