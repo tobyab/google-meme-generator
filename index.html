@@ -75,7 +75,7 @@
     </div>
     <button id="download-btn">Download Image</button>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
 <script>
   document.getElementById('text-form').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -83,15 +83,19 @@
     document.querySelector('#image-container .query').innerText = document.getElementById('query').value;
   });
 
-  document.getElementById('download-btn').addEventListener('click', function() {
-    html2canvas(document.getElementById('image-container')).then(function(canvas) {
-      let imgData = canvas.toDataURL('image/png');
-      let link = document.createElement('a');
-      link.href = imgData;
-      link.download = 'google-image.png';
+  document.getElementById('download-btn').addEventListener('click', function(e) {
+    e.preventDefault();
 
-      link.click();
-    });
+    domtoimage.toJpeg(document.getElementById('image-container'), { quality: 0.95 })
+        .then(function (dataUrl) {
+          let link = document.createElement('a');
+          link.download = 'image.jpeg';
+          link.href = dataUrl;
+          link.click();
+        })
+        .catch(function (error) {
+          console.error('oops, something went wrong!', error);
+        });
   });
 </script>
 </body>
