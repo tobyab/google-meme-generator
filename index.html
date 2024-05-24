@@ -87,8 +87,11 @@
     e.preventDefault();
 
     domtoimage.toPng(document.getElementById('image-container'), {
+      height: 1620,
+        width: 2200,
       style: {
         'transform': 'scale(2)',
+        'transform-origin': 'top left'
       } })
         .then(function (dataUrl) {
           let link = document.createElement('a');
